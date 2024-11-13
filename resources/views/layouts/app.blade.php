@@ -21,7 +21,7 @@
                         <a class="nav-link" href="{{ route('tasks.index') }}">Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Add Task</a>
+                        <a class="nav-link" href="{{ route('tasks.create') }}">Add Task</a>
                     </li>
                 </ul>
             </div>
