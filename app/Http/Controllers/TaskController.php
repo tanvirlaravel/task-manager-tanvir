@@ -19,20 +19,27 @@ class TaskController extends Controller
         return view('tasks.create');
     }
 
-    public function store(Request $request, Task $task)
+    public function store(Request $request)
     {
-        $request->validate([
-            'title'         =>'required|string|max:25',
-            'description'   =>'nullable|string'
-        ]);
 
-       Task::create([
-        'title' => $request->title,
-        'description' => $request->description
-       ]);
+    $request->validate([
+        'title'       => 'required|string|max:25',
+        'description' => 'nullable|string',
+    ]);
 
-        return redirect()->route('tasks.index');
-    }
+    $isCompleted = $request->has('is_completed') ? true : false;
+
+
+    Task::create([
+        'title'        => $request->title,
+        'description'  => $request->description,
+        'is_completed' => $isCompleted,
+    ]);
+
+
+    return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
+}
+
 
     function markAsComplete($id)
     {
