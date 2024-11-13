@@ -10,7 +10,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
+
                         <th>Title</th>
                         <th>Description</th>
                         <th>Status</th>
@@ -19,9 +19,11 @@
                 <tbody>
                     @foreach ($tasks as $task)
                         <tr>
-                            <td>{{ $task->id }}</td>
-                            <td>{{ $task->title }}</td>
-                            <td>{{ $task->description }}</td>
+
+                            <td class="@if ($task->is_completed)
+                                text-decoration-line-through
+                            @endif">{{ $task->title }}</td>
+                            <td >{{ $task->description }}</td>
                             <td>
                                 @if ($task->is_completed)
                                     <span class="badge bg-success">Completed</span>
