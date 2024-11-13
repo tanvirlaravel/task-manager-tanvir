@@ -33,4 +33,15 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.index');
     }
+
+    function markAsComplete($id)
+    {
+        // dd($id);
+        $task = Task::find($id);
+        // dd($task);
+        $task->is_completed =true;
+        $task->save();
+
+        return redirect()->route('tasks.index')->with('success', 'Task marked as  completed');
+    }
 }

@@ -31,6 +31,16 @@
                                     <span class="badge bg-warning text-dark">Pending</span>
                                 @endif
                             </td>
+                            <td>
+                                @if (!$task->is_completed)
+                                    <!-- Mark as Complete Form -->
+                                    <form action="{{ route('tasks.complete', $task->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-success btn-sm">Mark as Complete</button>
+                                    </form>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
