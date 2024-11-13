@@ -12,3 +12,4 @@ Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.crea
 Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 
 Route::patch('/tasks/{id}/complete', [TaskController::class, 'markAsComplete'])->name('tasks.complete');
+Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
