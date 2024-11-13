@@ -9,17 +9,26 @@
         <div class="card">
             <div class="card-body">
 
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
 
                 <form action="{{ route('tasks.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}" required>
+                        <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}" >
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea name="description" id="description" class="form-control" rows="4" required>{{ old('description') }}</textarea>
+                        <textarea name="description" id="description" class="form-control" rows="4" >{{ old('description') }}</textarea>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" name="is_completed" id="is_completed" class="form-check-input" {{ old('is_completed') ? 'checked' : '' }}>

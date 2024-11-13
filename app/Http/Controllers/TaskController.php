@@ -20,6 +20,11 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title'         =>'required|string|max:25',
+            'description'   =>'nullable|string'
+        ]);
+
         dd($request);
     }
 }
